@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.catagory{
+    border-radius: 50%;
+    border: 2px solid black;
+    overflow: hidden;
+}
+#swip{
+    margin-top: 1em;
+}
+img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+/* .active{
+
+}
+.deactive{
+    opacity:0;
+} */

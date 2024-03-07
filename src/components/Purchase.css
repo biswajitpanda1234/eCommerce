@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+#img-container{
+    background-color: white;
+    width: 40vw;
+    
+    margin-left: .5em;
+    img{
+        height: 80vh;
+        object-fit: contain;
+    }
+}
+
+#description{
+    width: 60vw;
+    padding: 1em;
+    padding-left: 2em;
+    background-color: white;
+    img{
+        width: 5%;
+        min-width: 40px;
+    }
+}

@@ -1,0 +1,47 @@
+*{
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+.parent {
+    margin: 0 !important;
+}
+
+.input-container{
+    background-color: rgb(211, 236, 252);
+    height: 2.5em;
+    align-items: center;
+    border-radius: 2em;
+}
+input{
+    width: 80%;
+    background-color: rgb(211, 236, 252);
+    outline: none;
+    height: 100%;
+    
+    &:focus {
+        color: #000; /* New text color when focused or typing*/
+      }
+    
+      /* Change placeholder color */
+      
+}
+.i{
+    padding: 0 1em
+}
+.cart-notification::after{
+    content: attr(no);
+    position: absolute;
+    top:1em ;
+    right: 20.9em;
+    background-color: red;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+
+}
