@@ -27,7 +27,7 @@ export default function Navbar({ color, font, search, items }) {
             items = 0
         }
     }
-    const [searchVal, setSearchVal] = useState("")
+    
     useGSAP(() => {
         gsap.from(".one-to-one", {
             duration: 1,
@@ -35,15 +35,17 @@ export default function Navbar({ color, font, search, items }) {
             y: -100
         })
     })
+    const [searchVal, setSearchVal] = useState("")
     const handleChange = (event) => {
         setSearchVal(event.target.value)
 
 
     }
+
     const [searchArr,setSearchArr] = useState([]);
     
     useEffect(() => {
-        setSearchArr([])
+        setSearchArr((prevSearch)=>[])
         if (searchVal !== "") {
             let electronicsSearch = electronics.filter((val) => {
 
@@ -51,14 +53,14 @@ export default function Navbar({ color, font, search, items }) {
                 //  ;
             })
             
-            setSearchArr([...electronicsSearch]);
+            setSearchArr((prevSearch)=>[...electronicsSearch]);
             if (searchArr.length < 8) {
                 let furnitureSearch = furniture.filter((val) => {
 
                     return (val.name.toLowerCase().includes(searchVal.toLowerCase()) || val.brand.toLowerCase().includes(searchVal.toLowerCase()) || val.catagory.toLowerCase().includes(searchVal.toLowerCase()))
                     //  ;
                 })
-                setSearchArr([...searchArr, ...furnitureSearch])
+                setSearchArr((prevSearch)=>[...prevSearch, ...furnitureSearch])
                 if (searchArr.length < 8) {
 
                     let vehicleSearch = vehicle.filter((val) => {
@@ -66,20 +68,19 @@ export default function Navbar({ color, font, search, items }) {
                         return (val.name.toLowerCase().includes(searchVal.toLowerCase()) || val.brand.toLowerCase().includes(searchVal.toLowerCase()) || val.catagory.toLowerCase().includes(searchVal.toLowerCase()) )
                         //  ;
                     })
-                    setSearchArr([...searchArr, ...vehicleSearch])
+                    setSearchArr((prevSearch)=>[...prevSearch, ...vehicleSearch])
                 }
             }
 
-        }
-        if (searchArr.length > 8) {
-            setSearchArr(searchArr.slice(0, 8))
         }
         
 
 
     }, [searchVal])
     
-    
+    if (searchArr.length > 8) {
+        setSearchArr(searchArr.slice(0, 8))
+    }
     return (
         <>
             <div className="parent flex justify-around items-center px-10 pt-5 pb-4" style={{

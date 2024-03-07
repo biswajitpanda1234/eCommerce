@@ -116,9 +116,8 @@ useGSAP(()=>{
           <SwiperSlide>
             <img src="images/home img/paddle scooter.jpg" alt="" />
           </SwiperSlide>
-          <SwiperSlide>
-            <img src="images/home img/scooter.jpg" alt="" />
-          </SwiperSlide>
+         
+          
           <SwiperSlide>
             <img src="images/home img/virat with smart watch.jpg" alt="" />
           </SwiperSlide>
