@@ -7,8 +7,8 @@ import ProductComponent from "./components/ProductComponent";
 import Purchase from "./components/Purchase";
 import AddToCart from "./components/AddToCart";
 import BuyNow from "./components/BuyNow";
-import Login from "./components/Login";
-import Register from "./components/Register";
+
+
 
 export default function App() {
   
@@ -42,8 +42,8 @@ export default function App() {
 
             <Route path="cart" element={<AddToCart />} />
             <Route path="buy" element={<BuyNow />} />
-            <Route path="login" element={<Login/>}/>
-            <Route path="register" element={<Register/>}/>
+           
+            
 
 
           </Route>

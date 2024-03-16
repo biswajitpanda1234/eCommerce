@@ -17,7 +17,7 @@ export default function BuyNow() {
     //     alert('Invalid price');
     //     navigate(-1);
     // }
-    console.log(price)
+    
     const thakyou = () => {
         setThank({
             display: 'none',
@@ -36,10 +36,12 @@ export default function BuyNow() {
                         <TextField id="standard-basic" label="City" variant="standard" />
                         <TextField id="standard-basic" label="Pin Code" variant="standard" />
                         <TextField id="standard-basic" label="Phone" variant="standard" />
+                        <TextField id="standard-basic" label="Email" variant="standard" />
 
                         <Button variant="outlined" style={{ marginBlock: "1em" }}>BACK TO CART</Button>
                     </div>
                     <div className='w-[47%] m-4'>
+                        <h1>Payment Method</h1>
                         <FormControl fullWidth sx={{ m: 1 }} variant="standard">
                             <InputLabel htmlFor="standard-adornment-amount">Amount</InputLabel>
                             <Input
@@ -49,13 +51,13 @@ export default function BuyNow() {
                         </FormControl>
                         <TextField id="standard-basic" label="Card Name" variant="standard" />
                         <TextField id="standard-basic" label="Card Number" variant="standard" />
-                       
 
-                        <div className='my-4'>Expire</div>
-                        <input type="date" style={{ backgroundColor: "white", borderBottom: "1px solid", width: "14em" }} />
-                        
+
+                        <div className=''>Expire</div>
+                        <input type="date" style={{ backgroundColor: "white", borderBottom: "1px solid", height: "2em" }} />
+
                         <TextField id="standard-basic" label="cvv" variant="standard" />
-                        <Button variant="contained" style={{ marginTop: "4em" }} onClick={thakyou}>PAY NOW</Button>
+                        <Button variant="contained" style={{ marginTop: "6.4em" }} onClick={thakyou}>PAY NOW</Button>
                     </div>
                 </div>
 

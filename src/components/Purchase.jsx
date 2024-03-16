@@ -12,12 +12,12 @@ import Testimonial from './Testimonial';
 import { cart } from "../actions/index"
 import changeCartItems from "../reducers/cart"
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+
 import { Link } from 'react-router-dom';
 
 export default function Purchase({ type }) {
 
-    const dispatch = useDispatch();
+  
     // let data = useSelector((state) => state.changeCartItems)
     const getData = () => {
         let data = localStorage.getItem("cart")
@@ -40,14 +40,14 @@ export default function Purchase({ type }) {
         let item = cartList.find((item) => item.imgSrc === event.imgSrc)
 
         if (item) {
-            console.log(item)
+            
             const updatedCartList = cartList.map((item) =>
                 item.imgSrc === event.imgSrc ? { ...item, quantity: item.quantity + 1 } : item
             );
             // dispatch(cart(updatedCartList))
             setCartList(updatedCartList);
         } else {
-            console.log("hhe")
+            
             event = { ...event, quantity: 1 }
             // dispatch(cart([...data, event]))
             setCartList([...cartList, event])
@@ -78,7 +78,7 @@ export default function Purchase({ type }) {
         return (value.id == proId);
     })
 
-    if (productDetail.length == 0) {
+    if (productDetail.length === 0) {
         alert("sorry nothing found")
     }
     const navigate = useNavigate();
@@ -90,19 +90,24 @@ export default function Purchase({ type }) {
 
 
     let cartITEM;
-    if (cartList.length > 0) {
+    try{
+        if (cartList.length > 0) {
 
-        cartITEM = cartList.map((val) => {
-
-            return val.quantity;
-        })
-        cartITEM = cartITEM.reduce((a, b) => {
-            return a + b;
-        })
-    } else {
-
-        cartITEM = 0;
+            cartITEM = cartList.map((val) => {
+    
+                return val.quantity;
+            })
+            cartITEM = cartITEM.reduce((a, b) => {
+                return a + b;
+            })
+        } else {
+    
+            cartITEM = 0;
+        }
+    }catch(e){
+        
     }
+    
 
     // these code for suggested elements
     let suggestedArr = [];
@@ -121,14 +126,14 @@ export default function Purchase({ type }) {
         suggestedArr.push(type[random]);
     }
 
-    console.log("hello", suggestedArr);
+    
 
 
     return (
         <>
             {(cartList) ? <Navbar color="#0087EB" font="white" search="blue" items={cartITEM} /> : <Navbar color="#0087EB" font="white" search="blue" items={0} />}
 
-            <div className='flex mt-[5.8em]' style={{ marginBottom: 0 }}>
+            <div className='flex mt-[6.5em]' style={{ marginBottom: 0 }}>
                 <div id='img-container'>
                     <img src={productDetail[0].imgSrc} alt="sdfdss" />
                     <div className='mx-auto text-center'>
@@ -138,7 +143,7 @@ export default function Purchase({ type }) {
 
                 </div>
                 <div id="description" className='leading-8 h-[90vh] overflow-y-auto scorllbar-style-1'>
-                    <h1>{productDetail[0].name.toUpperCase()}</h1>
+                    <h1 className='font-bold text-xl mb-2'>{productDetail[0].name.toUpperCase()}</h1>
                     <div className="flex">
                         <span className='bg-green-500 p-1 text-white mr-3 '>4.5 ⭐</span>
                         <img src="/images/other/arrured.jpg" alt="" />
@@ -169,14 +174,14 @@ export default function Purchase({ type }) {
                     </div>
 
                     <div className='my-5'>
-                        <h1 className=' text-base font-bold'>More Products you may like</h1>
+                        <h1 className=' text-xl font-bold'>More Products you may like</h1>
                         <div className='flex items-center overflow-x-auto w-[100%] '>
-                            {suggestedArr.map((value) => {
+                            {suggestedArr.map((value, index) => {
                                 let inde = value.imgSrc.indexOf("/",1);
                                 let inde2 = value.imgSrc.indexOf("/",inde+1)
                                 let location = value.imgSrc.slice(inde,inde2);
-                                console.log(location)
-                                return <div ><Link to={`${location}/${value.id}`}>
+                                
+                                return <div key={index} ><Link to={`${location}/${value.id}`}>
                                 <img src={value.imgSrc} alt="" style={{ width: "20em", padding: "2em" }} /></Link></div>
                             })}
                         </div>

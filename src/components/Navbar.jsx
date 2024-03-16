@@ -5,7 +5,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import StorefrontOutlinedIcon from '@mui/icons-material/StorefrontOutlined';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-import { useSelector, useDispatch } from 'react-redux';
+
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import "./Navbar.css"
@@ -16,14 +16,17 @@ export default function Navbar({ color, font, search, items }) {
 
     if (!items) {
         items = JSON.parse(localStorage.getItem("cart"));
-        if (items.length > 0) {
-            items = items.map((val) => {
-                return val.quantity;
-            })
-            items = items.reduce((acc, val) => {
-                return acc + val;
-            })
-        } else {
+        if(items){
+            if (items.length > 0) {
+                items = items.map((val) => {
+                    return val.quantity;
+                })
+                items = items.reduce((acc, val) => {
+                    return acc + val;
+                })
+            }
+        }
+        else {
             items = 0
         }
     }
@@ -94,7 +97,7 @@ export default function Navbar({ color, font, search, items }) {
 
                         <SearchOutlinedIcon style={{ color: search, marginInline: ".5em" }} />
                     </div>
-                    <input type="text" placeholder='Search' value={searchVal} onChange={handleChange} onClick={()=>{setSearchArr([])}} />
+                    <input type="text" placeholder='search by product name, catagory or brand name' value={searchVal} onChange={handleChange} onClick={()=>{setSearchArr([])}} />
                     <div className='w-[85%] bg-white ml-10 px-5' style={{ lineHeight: "2em" }}>
                         {
                             (searchArr.length > 0) ?

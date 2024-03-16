@@ -21,7 +21,7 @@ import Navbar from './Navbar';
 
 import Testimonial from './Testimonial';
 import { Link } from 'react-router-dom'
-import Login from './Login';
+
 export default function Homepage() {
   const navigate = useNavigate();
   
@@ -108,7 +108,7 @@ useGSAP(()=>{
           className="mySwiper"
         >
           <SwiperSlide>
-            <img src="images/home img/bed.jpg" alt=""  />
+            <img src="images/home img/bed.jpeg" alt=""  />
           </SwiperSlide>
           <SwiperSlide>
             <img src="images/home img/mixer.jpg" alt="" />

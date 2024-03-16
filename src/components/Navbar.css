@@ -20,13 +20,14 @@ input{
     outline: none;
     height: 100%;
     
-    &:focus {
-        color: #000; /* New text color when focused or typing*/
-      }
     
       /* Change placeholder color */
       
 }
+input:focus {
+    color: #000; /* New text color when focused or typing*/
+  }
+
 .i{
     padding: 0 1em
 }

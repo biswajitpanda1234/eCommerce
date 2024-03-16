@@ -49,7 +49,7 @@ export default function ProductList({ productState, productBrand, type }) {
 
                     return (
                         <div key={index} id='prod' className='listing hover:scale-110 duration-300  shadow-[-6px_-3px_17px_0px_rgba(255,255,255,1),7px_6px_13px_0px_rgba(0,0,0,0.31)]' >
-                            <Link to={`${location.pathname}/${value.id}`} target='__blank'>
+                            <Link to={`${location.pathname}/${value.id}`}>
                                 {/* <Link to= {"/electronics/1"}> */}
                                 <div className='bg-white img-container'>
                                     <img src={value.imgSrc} alt="hello" height="100px" width="100px" />

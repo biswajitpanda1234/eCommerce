@@ -9,6 +9,7 @@ import { cart } from "../actions/index"
 import { useSelector, useDispatch } from 'react-redux';
 export default function AddToCart({ list }) {
   const dispatch = useDispatch();
+ 
   let data = useSelector((state) => state.changeCartItems);
   
   const getData = ()=>{
@@ -25,17 +26,18 @@ export default function AddToCart({ list }) {
 }
   
   // let items = getData();
-  const [items, setItems] = useState(getData);
-  const [items2, setItems2]= useState([]);
+  const [flag, setFlag] = useState(true);// use to just render the page
+  const [items, setItems] = useState(getData());
+  // const [items2, setItems2]= useState([]);
 
 
-  const [count, setCount] = useState(1);
-  const increase = () => {
-    setCount(count + 1);
-  }
-  const decrease = () => {
-    setCount(count - 1);
-  }
+  // const [count, setCount] = useState(1);
+  // const increase = () => {
+  //   setCount(count + 1);
+  // }
+  // const decrease = () => {
+  //   setCount(count - 1);
+  // }
 
 
 
@@ -51,6 +53,7 @@ export default function AddToCart({ list }) {
   const [no, setNo] = useState(items.length);
   const [price, setPrice] = useState(p);
   const navigate = useNavigate();
+  
   function gotoPurchase() {
 
     localStorage.setItem("price", JSON.stringify(price));
@@ -113,7 +116,7 @@ export default function AddToCart({ list }) {
 
       {items.map((value, index) => {
         const [counts, setCounts] = useState(value.quantity);
-
+       
         const decrease=(p)=> {
           setCounts(counts-1);
           const newVal = {...value, quantity: value.quantity-1};
@@ -151,9 +154,10 @@ export default function AddToCart({ list }) {
           // setNo(no + 1);
           setPrice(price + p);
         }
+         
         function remove(val) {
-
-          setNo(no - counts);
+          
+         
 
           let amount = counts * val.price;
           setPrice(price - amount);
@@ -161,9 +165,15 @@ export default function AddToCart({ list }) {
             return value !== val;
           })
           localStorage.setItem("cart", JSON.stringify(ite));
-          setItems(getData);
-
-          window.location.href = window.location.href;
+          
+          setNo(no - counts);
+          // if(flag) {
+          //   setFlag(false)
+          // }else{
+          //   setFlag(true)
+          // }
+          window.location.reload();
+          
         }
         
 

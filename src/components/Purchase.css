@@ -10,10 +10,11 @@
     width: 40vw;
     
     margin-left: .5em;
-    img{
-        height: 80vh;
-        object-fit: contain;
-    }
+    
+}
+#img-container img{
+    height: 80vh;
+    object-fit: contain;
 }
 
 #description{
@@ -21,8 +22,9 @@
     padding: 1em;
     padding-left: 2em;
     background-color: white;
-    img{
-        width: 5%;
-        min-width: 40px;
-    }
+    
+}
+#description img{
+    width: 5%;
+    min-width: 40px;
 }
